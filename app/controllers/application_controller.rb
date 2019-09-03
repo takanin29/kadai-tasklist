@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
     def index
-        @tasks = tasks.all
+        @tasks = Task.all
     end
     
     def show
-        @task = task.find(params[:id])
+        @task = Task.find(params[:id])
     end
     
     def new
