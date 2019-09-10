@@ -1,16 +1,12 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-sm-4">
-      <%= form_with(model: @task, local: true) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
-        </div>
-        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+    <h1>タスク一覧</h1>
+    <ul>
+      <% @tasks.each do |task| %>
+       <li><%= link_to task.id, task %> : <%= task.status %> &gt; <%= task.content %></li>
       <% end %>
-    </aside>
-    <div class="col-sm-8">
-      <%= render 'tasks#index', tasks: @tasks %>
-    </div>
+    </ul>
+
+    <%= link_to 'タスク新規作成の入力', new_task_path %>
   </div>
 <% else %>
   <div class="center jumbotron">

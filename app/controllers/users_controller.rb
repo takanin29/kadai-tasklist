@@ -18,16 +18,18 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to @user
+      # redirect_to root_url
+      redirect_to login_url
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
   end
-end
-
   private
 
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)
   end
+end
+
+  
